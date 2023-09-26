@@ -1,3 +1,4 @@
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,5 +13,4 @@ public abstract class InputReciever : MonoBehaviour
     {
         inputHandlers = GetComponents<IInputHandler>();
     }
-
 }
