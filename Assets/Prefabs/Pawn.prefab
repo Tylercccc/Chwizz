@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 473602}
   - component: {fileID: 3398312}
   - component: {fileID: 2328314}
-  - component: {fileID: 7978321987055156608}
   - component: {fileID: -1668029401526833945}
   - component: {fileID: 4335907909695221096}
+  - component: {fileID: 8846805879774888181}
   m_Layer: 0
   m_Name: Pawn
   m_TagString: Untagged
@@ -86,18 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7978321987055156608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 104878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb3433d84922e4d4d9a854f536ef8088, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-1668029401526833945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,3 +111,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableMoves: []
+--- !u!114 &8846805879774888181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 104878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06609c57578ed4343863b07dd9e47c14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
