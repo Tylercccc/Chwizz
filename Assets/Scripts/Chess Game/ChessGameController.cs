@@ -106,7 +106,7 @@ public class ChessGameController : MonoBehaviour
         return activePlayer.team == team;
     }
 
-    public void EndTurn()
+    public void EndMovementPhase()
     {
         GenerateAllPossiblePlayerMoves(activePlayer);
         GenerateAllPossiblePlayerMoves(GetOpponentToPlayer(activePlayer));
@@ -116,8 +116,15 @@ public class ChessGameController : MonoBehaviour
         }
         else
         {
-            ChangeActiveTeam();
+            StartWizardPhase();
+            //ChangeActiveTeam();
         }
+    }
+    private void StartWizardPhase()
+    {
+        Piece piece = activePlayer.GetPiecesOfType<King>()[0];
+        board.StartWizardPhase(piece);
+        //Debug.Log("Your " + piece + " may now cast a spell");
     }
 
     private bool CheckIfGameIsFinished()
@@ -160,7 +167,6 @@ public class ChessGameController : MonoBehaviour
         whitePlayer.activePieces.ForEach(p => Destroy(p.gameObject));
         blackPlayer.activePieces.ForEach(p => Destroy(p.gameObject));
     }
-
     private void ChangeActiveTeam()
     {
         activePlayer = activePlayer == whitePlayer ? blackPlayer : whitePlayer;
