@@ -27,8 +27,16 @@ public class King : Piece
     public override List<Vector2Int> SelectAvaliableSquares()
     {
         avaliableMoves.Clear();
-        AssignStandardMoves();
-        AssignCastlingMoves();
+        if (board.IsWizardPhase())
+        {
+            Debug.Log("Assigning wizard spell moves");
+            AssignWizardSpellMoves(8);
+        }
+        else
+        {
+            AssignStandardMoves(1);
+            AssignCastlingMoves();
+        }
         return avaliableMoves;
 
     }
@@ -73,9 +81,9 @@ public class King : Piece
         return null;
     }
 
-    private void AssignStandardMoves()
+    private void AssignStandardMoves(float range)
     {
-        float range = 1;
+        //float range = 1;
         foreach (var direction in directions)
         {
             for (int i = 1; i <= range; i++)
@@ -96,19 +104,31 @@ public class King : Piece
             }
         }
     }
+    private void AssignWizardSpellMoves(float range)
+    {
+        AssignStandardMoves(range);
+    }
 
     public override void MovePiece(Vector2Int coords)
     {
-        base.MovePiece(coords);
-        if (coords == leftCastlingMove)
+        if (board.IsWizardPhase())
         {
-            board.UpdateBoardOnPieceMove(coords + Vector2Int.right, leftRook.occupiedSquare, leftRook, null);
-            leftRook.MovePiece(coords + Vector2Int.right);
+            base.MovePiece(coords);
+            //board.EndWizardPhase();
         }
-        else if (coords == rightCastlingMove)
+        else
         {
-            board.UpdateBoardOnPieceMove(coords + Vector2Int.left, rightRook.occupiedSquare, rightRook, null);
-            rightRook.MovePiece(coords + Vector2Int.left);
+            base.MovePiece(coords);
+            if (coords == leftCastlingMove)
+            {
+                board.UpdateBoardOnPieceMove(coords + Vector2Int.right, leftRook.occupiedSquare, leftRook, null);
+                leftRook.MovePiece(coords + Vector2Int.right);
+            }
+            else if (coords == rightCastlingMove)
+            {
+                board.UpdateBoardOnPieceMove(coords + Vector2Int.left, rightRook.occupiedSquare, rightRook, null);
+                rightRook.MovePiece(coords + Vector2Int.left);
+            }
         }
     }
 

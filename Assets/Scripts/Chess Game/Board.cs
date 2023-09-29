@@ -74,12 +74,25 @@ public class Board : MonoBehaviour
         List<Vector2Int> selection = selectedPiece.avaliableMoves;
         ShowSelectionSquares(selection);
     }
+    public bool IsWizardPhase()
+    {
+        return chessController.IsWizardPhaseActive();
+    }
+    public void StartWizardPhase(Piece piece)
+    {
+        AutoSelectWizard(piece);
+    }
+    //public void EndWizardPhase()
+    //{
+    //    chessController
+    //}
     private void AutoSelectWizard(Piece piece)
     {
         chessController.RemoveMovesEnablingAttakOnPieceOfType<King>(piece);
         selectedPiece = piece;
         List<Vector2Int> selection = selectedPiece.avaliableMoves;
         ShowSelectionSquares(selection);
+        Debug.Log("Your " + piece + " may now cast a spell");
     }
 
     private void ShowSelectionSquares(List<Vector2Int> selection)
@@ -109,7 +122,7 @@ public class Board : MonoBehaviour
     }
     private void EndMovementPhase()
     {
-        chessController.EndMovementPhase();
+        chessController.EndTurn();
     }
 
     public void UpdateBoardOnPieceMove(Vector2Int newCoords, Vector2Int oldCoords, Piece newPiece, Piece oldPiece)
@@ -181,11 +194,6 @@ public class Board : MonoBehaviour
     {
         selectedPiece = null;
         CreateGrid();
-    }
-    public void StartWizardPhase(Piece piece)
-    {
-        AutoSelectWizard(piece);
-        Debug.Log("Your " + piece + " may now cast a spell");
     }
 
 }

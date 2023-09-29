@@ -11,6 +11,7 @@ public class ChessGameController : MonoBehaviour
     {
         Init, Play, Finished
     }
+    private bool isWizardPhase = false;
 
     [SerializeField] private BoardLayout startingBoardLayout;
     [SerializeField] private Board board;
@@ -105,8 +106,12 @@ public class ChessGameController : MonoBehaviour
     {
         return activePlayer.team == team;
     }
-
-    public void EndMovementPhase()
+    public bool IsWizardPhaseActive()
+    {
+        Debug.Log("Wizard phase is: " + isWizardPhase);
+        return isWizardPhase;
+    }
+    public void EndTurn()
     {
         GenerateAllPossiblePlayerMoves(activePlayer);
         GenerateAllPossiblePlayerMoves(GetOpponentToPlayer(activePlayer));
@@ -116,14 +121,30 @@ public class ChessGameController : MonoBehaviour
         }
         else
         {
-            StartWizardPhase();
+            if (isWizardPhase == false)
+                isWizardPhase = true;
+            else
+                isWizardPhase = false;
+
+            //isWizardPhase = false ? true : false;
+            CheckWizardPhase();
             //ChangeActiveTeam();
         }
     }
-    private void StartWizardPhase()
+    private void CheckWizardPhase()
     {
-        Piece piece = activePlayer.GetPiecesOfType<King>()[0];
-        board.StartWizardPhase(piece);
+        if (isWizardPhase == true)
+        {
+            Piece piece = activePlayer.GetPiecesOfType<King>()[0];
+            //isWizardPhase = true;
+            GenerateAllPossiblePlayerMoves(activePlayer);
+            GenerateAllPossiblePlayerMoves(GetOpponentToPlayer(activePlayer));
+            board.StartWizardPhase(piece);
+        }
+        else
+        {
+            ChangeActiveTeam();
+        }
         //Debug.Log("Your " + piece + " may now cast a spell");
     }
 

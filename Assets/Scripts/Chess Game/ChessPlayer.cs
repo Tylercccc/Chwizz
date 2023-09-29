@@ -68,7 +68,6 @@ public class ChessPlayer
 		}
 
 	}
-
 	internal bool CheckIfIsAttacigPiece<T>() where T : Piece
 	{
 		foreach (var piece in activePieces)
