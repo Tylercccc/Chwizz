@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 2309778}
   - component: {fileID: 24336764279211915}
   - component: {fileID: -4820852967611479712}
-  - component: {fileID: -5789406366964357720}
-  - component: {fileID: -7582543285331703800}
-  - component: {fileID: 6091827051662115394}
+  - component: {fileID: 4260879360596776440}
+  - component: {fileID: 664896790184617692}
+  - component: {fileID: 4672279526825430527}
   m_Layer: 0
   m_Name: Pawn
   m_TagString: Untagged
@@ -115,7 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _meshRenderer: {fileID: 0}
---- !u!114 &-5789406366964357720
+--- !u!114 &4260879360596776440
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eabc71a7268eb7c4f9cecbcce40ffe89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-7582543285331703800
+--- !u!114 &664896790184617692
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,7 +139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f03898ac328f4a247bb30c656e5e24f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!64 &6091827051662115394
+--- !u!64 &4672279526825430527
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
