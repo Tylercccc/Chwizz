@@ -122,7 +122,7 @@ public class Board : MonoBehaviour
     }
     private void EndMovementPhase()
     {
-        chessController.EndTurn();
+        chessController.TryEndTurn();
     }
 
     public void UpdateBoardOnPieceMove(Vector2Int newCoords, Vector2Int oldCoords, Piece newPiece, Piece oldPiece)

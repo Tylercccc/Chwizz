@@ -111,7 +111,7 @@ public class ChessGameController : MonoBehaviour
         Debug.Log("Wizard phase is: " + isWizardPhase);
         return isWizardPhase;
     }
-    public void EndTurn()
+    public void TryEndTurn()
     {
         GenerateAllPossiblePlayerMoves(activePlayer);
         GenerateAllPossiblePlayerMoves(GetOpponentToPlayer(activePlayer));
@@ -121,12 +121,7 @@ public class ChessGameController : MonoBehaviour
         }
         else
         {
-            if (isWizardPhase == false)
-                isWizardPhase = true;
-            else
-                isWizardPhase = false;
-
-            //isWizardPhase = false ? true : false;
+            isWizardPhase = isWizardPhase == false ? true : false;
             CheckWizardPhase();
             //ChangeActiveTeam();
         }
