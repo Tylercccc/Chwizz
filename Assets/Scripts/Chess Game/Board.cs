@@ -16,11 +16,14 @@ public class Board : MonoBehaviour
     private ChessGameController chessController;
     private SquareSelectorCreator squareSelector;
 
+    private Camera cam;
+
 
     private void Awake()
     {
         squareSelector = GetComponent<SquareSelectorCreator>();
         CreateGrid();
+        cam = Camera.main;
     }
 
     public void SetDependencies(ChessGameController chessController)
@@ -92,7 +95,19 @@ public class Board : MonoBehaviour
         selectedPiece = piece;
         List<Vector2Int> selection = selectedPiece.avaliableMoves;
         ShowSelectionSquares(selection);
+        
         Debug.Log("Your " + piece + " may now cast a spell");
+    }
+    private void FixedUpdate()
+    {
+        if(IsWizardPhase() == true)
+        {
+            Vector3 screenPoint = Input.mousePosition;
+            screenPoint.z = 10;
+            Vector3 worldPoint = Camera.main.ScreenToWorldPoint(screenPoint);
+            Vector3 screenPos = cam.WorldToScreenPoint(selectedPiece.transform.position);
+            Debug.DrawLine(selectedPiece.transform.position, worldPoint, Color.green);
+        }
     }
 
     private void ShowSelectionSquares(List<Vector2Int> selection)

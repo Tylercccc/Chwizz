@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class King : Piece
 {
-
     Vector2Int[] directions = new Vector2Int[]
     {
         new Vector2Int(-1, 1),

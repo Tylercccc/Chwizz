@@ -10,6 +10,8 @@ public class SquareSelectorCreator : MonoBehaviour
 	[SerializeField] private GameObject selectorPrefab;
 	private List<GameObject> instantiatedSelectors = new List<GameObject>();
 
+	private bool isCasting = false;
+
 	public void ShowSelection(Dictionary<Vector3, bool> squareData)
 	{
 		ClearSelection();
@@ -23,8 +25,22 @@ public class SquareSelectorCreator : MonoBehaviour
 			}
 		}
 	}
+	//public void ShowSpellSelection(Dictionary<Vector3, bool> squareData)
+ //   {
+	//	ClearSelection();
+	//	isCasting = true;
+	//	foreach (var data in squareData)
+	//	{
+	//		GameObject selector = Instantiate(selectorPrefab, data.Key, Quaternion.identity);
+	//		instantiatedSelectors.Add(selector);
+	//		foreach (var setter in selector.GetComponentsInChildren<MaterialSetter>())
+	//		{
+	//			setter.SetSingleMaterial(data.Value ? freeSquareMaterial : enemySquareMaterial);
+	//		}
+	//	}
+	//}
 
-	public void ClearSelection()
+    public void ClearSelection()
 	{
 		for (int i = 0; i < instantiatedSelectors.Count; i++)
 		{
