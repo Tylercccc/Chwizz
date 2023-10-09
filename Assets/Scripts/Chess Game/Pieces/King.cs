@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(FireballCaster))] 
 public class King : Piece
 {
     Vector2Int[] directions = new Vector2Int[]
